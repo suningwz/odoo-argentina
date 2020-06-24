@@ -432,7 +432,7 @@ class AccountPaymentGroup(models.Model):
                 invoice = line.move_id
                 factor = invoice and invoice._get_tax_factor() or 1.0
                 selected_debt_untaxed += line.amount_residual * factor
-            sign = rec.partner_type == 'supplier' and -1.0 or 1.0
+            sign = rec.partner_type == 'supplier' and 1.0 or -1.0
             rec.selected_finacial_debt = selected_finacial_debt * sign
             rec.selected_debt = selected_debt * sign
             rec.selected_debt_untaxed = selected_debt_untaxed * sign
