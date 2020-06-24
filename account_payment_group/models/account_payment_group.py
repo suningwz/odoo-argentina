@@ -426,7 +426,8 @@ class AccountPaymentGroup(models.Model):
             selected_debt_untaxed = 0.0
             for line in rec.to_pay_move_line_ids:
                 selected_finacial_debt += line.financial_amount_residual
-                selected_debt += line.amount_residual
+                # selected_debt += line.amount_residual
+                selected_debt += line.move_id.amount_residual
                 # factor for total_untaxed
                 invoice = line.move_id
                 factor = invoice and invoice._get_tax_factor() or 1.0
