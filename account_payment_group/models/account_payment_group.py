@@ -424,15 +424,14 @@ class AccountPaymentGroup(models.Model):
             selected_finacial_debt = 0.0
             selected_debt = 0.0
             selected_debt_untaxed = 0.0
-            for line in rec.to_pay_move_line_ids:
+            for line in rec.to_pay_move_line_ids._origin:
                 selected_finacial_debt += line.financial_amount_residual
-                # selected_debt += line.amount_residual
-                selected_debt += line.move_id.amount_residual
+                selected_debt += line.amount_residual
                 # factor for total_untaxed
                 invoice = line.move_id
                 factor = invoice and invoice._get_tax_factor() or 1.0
                 selected_debt_untaxed += line.amount_residual * factor
-            sign = 1.0
+            sign = rec.partner_type == 'supplier' and -1.0 or 1.0
             rec.selected_finacial_debt = selected_finacial_debt * sign
             rec.selected_debt = selected_debt * sign
             rec.selected_debt_untaxed = selected_debt_untaxed * sign
@@ -475,6 +474,7 @@ class AccountPaymentGroup(models.Model):
             ('reconciled', '=', False),
             ('full_reconcile_id', '=', False),
             ('company_id', '=', self.company_id.id),
+            ('move_id.state', '=', 'posted'),
             # '|',
             # ('amount_residual', '!=', False),
             # ('amount_residual_currency', '!=', False),
