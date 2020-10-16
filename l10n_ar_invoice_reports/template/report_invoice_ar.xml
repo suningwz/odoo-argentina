@@ -5,9 +5,7 @@
     <xpath expr="//t[@t-set='address']" position="replace">
     <t t-if="o.company_id.country_id.name == 'Argentina'">     
       <div style="margin:top;" class="text-center">
-        <p>
-          <span t-field="o.l10n_latam_document_type_id.l10n_ar_letter" invisible="1"/>
-          <span t-field="o.l10n_latam_document_type_id.code" invisible="1"/><br/>
+        <p><br/>
           <t t-if="type_copy==2">
             <t t-set="copies">
             <t>DUPLICADO</t>
