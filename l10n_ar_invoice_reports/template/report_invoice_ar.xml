@@ -86,8 +86,8 @@
           </td>
       </t>
     </xpath>
-    <t t-set="custom_footer" position="replace">
-    <t t-set="custom_footer" >
+    <xpath expr="//div[@class='footer']" position="replace">
+	    <div class="footer" style="border: 1px solid black;">
         <div class="row" style="margin-bottom: 0px !important; padding-top: 3px; padding-bottom: 3px;">
             <div name="footer_left_column" class="col-8 text-center">
               <img t-if="o.afip_qr_url" t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;' % ('QR', o.afip_qr_url)" alt="QR"  style="width:80px;height:80px"/>
@@ -104,7 +104,7 @@
               </div>
             </div>
         </div>
-    </t>
-    </t>
+    </div>
+    </xpath>
   </template>
 </odoo>
