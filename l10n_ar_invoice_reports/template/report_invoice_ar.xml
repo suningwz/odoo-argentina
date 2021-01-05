@@ -87,7 +87,7 @@
       </t>
     </xpath>
   </template>
-
+<!-- 
   <template id="report_invoice_document_qr" inherit_id="l10n_ar.report_invoice_document">
     <t t-set="custom_footer" position="replace">
     <t t-set="custom_footer" >
@@ -122,5 +122,5 @@
       </t>
     </t>
     </t>
-  </template>
+  </template> -->
 </odoo>
