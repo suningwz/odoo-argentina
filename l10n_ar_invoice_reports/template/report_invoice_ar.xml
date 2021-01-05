@@ -90,18 +90,18 @@
       <t t-if="o.company_id.country_id.name == 'Argentina' and o.afip_auth_code">
         <div class="row">
             <div name="footer_left_column" class="col-8 text-center">
-                <img t-if="o.afip_barcode" t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;humanreadable=1' % ('I2of5', o.afip_barcode)" alt="Barcode"  style="height:80px"/>
+              <img t-if="o.afip_qr_url" t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;humanreadable=1' % ('I2of5', o.afip_url_qr)" alt="QR"  style="width:80px;height:80px"/>
             </div>
             <div name="footer_right_column" class="col-4 text-right">
-                <div t-if="afip_auth_code">
-                    CAE N°: <span t-field="o.afip_auth_code"/>
-                </div>
-                <div t-if="afip_auth_code_due">
-                    Fecha Vto CAE: <span t-field="o.afip_auth_code_due"/>
-                </div>
-                <div name="pager" t-if="report_type == 'pdf'">
-                    Page: <span class="page"/> / <span class="topage"/>
-                </div>
+              <div t-if="afip_auth_code">
+                  CAE N°: <span t-field="o.afip_auth_code"/>
+              </div>
+              <div t-if="afip_auth_code_due">
+                  Fecha Vto CAE: <span t-field="o.afip_auth_code_due"/>
+              </div>
+              <div name="pager" t-if="report_type == 'pdf'">
+                  Page: <span class="page"/> / <span class="topage"/>
+              </div>
             </div>
         </div>
       </t>
