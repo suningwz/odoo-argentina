@@ -91,7 +91,6 @@
   <template id="report_invoice_document_qr" inherit_id="l10n_ar.report_invoice_document" primary="True">
     <t t-set="custom_footer" position="replace">
     <t t-set="custom_footer" >
-      <t t-if="o.afip_auth_code">
         <div class="row" style="margin-bottom: 0px !important; padding-top: 3px; padding-bottom: 3px;">
             <div name="footer_left_column" class="col-8 text-center">
               <img t-if="o.afip_qr_url" t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;' % ('QR', o.afip_qr_url)" alt="QR"  style="width:80px;height:80px"/>
@@ -108,18 +107,6 @@
               </div>
             </div>
         </div>
-      </t>
-      <t t-else="">
-        <div class="row">
-            <div name="footer_left_column" class="col-8 text-center">
-            </div>
-            <div name="footer_right_column" class="col-4 text-right">
-                <div name="pager" t-if="report_type == 'pdf'">
-                    Pagina: <span class="page"/> / <span class="topage"/>
-                </div>
-            </div>
-        </div>
-      </t>
     </t>
     </t>
   </template>
