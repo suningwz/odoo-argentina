@@ -86,22 +86,28 @@
           </td>
       </t>
     </xpath>
-    <xpath expr="//div[hasclass('clearfix')]" position="after">
-      <t t-if="o.company_id.country_id.name == 'Argentina' and o.afip_auth_code">
-        <br/>
-        <div id="barcode">
-          <div style="margin-left:-27px;">
-            <img t-if="o.afip_qr_url" t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;' % ('QR', o.afip_qr_url)" alt="QR"  style="width:80px;height:80px"/>
+  </template>
+
+  <template id="report_invoice_document_qr" inherit_id="l10n_ar.report_invoice_document" primary="True">
+    <t t-set="custom_footer" position="replace">
+      <t t-set="custom_footer" >
+          <div class="row" style="border: 1px solid black; margin-bottom: 0px !important; padding-top: 3px; padding-bottom: 3px;">
+              <div name="footer_left_column" class="col-8 text-center">
+                <img t-if="o.afip_qr_url" t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;' % ('QR', o.afip_qr_url)" alt="QR"  style="width:80px;height:80px"/>
+              </div>
+              <div name="footer_right_column" class="col-4 text-right">
+                <div t-if="afip_auth_code">
+                    CAE N°: <span t-field="o.afip_auth_code"/>
+                </div>
+                <div t-if="afip_auth_code_due">
+                    Fecha Vto CAE: <span t-field="o.afip_auth_code_due"/>
+                </div>
+                <div name="pager" t-if="report_type == 'pdf'">
+                    Pagina: <span class="page"/> / <span class="topage"/>
+                </div>
+              </div>
           </div>
-          <br/>
-          CAE N°:
-          <span t-field="o.afip_auth_code"/><br/>
-          Fecha Vto CAE:
-          <span t-field="o.afip_auth_code_due"/><br/>
-        </div>
-        <!-- TODO Move QR to the right section-->
-        <!-- <img t-att-src="'/report/barcode/QR/%s' % 'https://mastercore.net/'" width="100" height="100"/> <br/> -->
       </t>
-    </xpath>
+    </t>
   </template>
 </odoo>
