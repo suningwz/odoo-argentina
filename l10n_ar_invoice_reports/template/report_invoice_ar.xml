@@ -88,7 +88,7 @@
     </xpath>
   </template>
 
-  <template id="report_invoice_document_qr" inherit_id="l10n_ar.report_invoice_document" primary="True">
+  <template id="report_invoice_document_qr" inherit_id="l10n_ar.report_invoice_document_with_payments" primary="True">
     <t t-set="custom_footer" position="replace">
       <t t-set="custom_footer" >
           <div class="row" style="border: 1px solid black; margin-bottom: 0px !important; padding-top: 3px; padding-bottom: 3px;">
