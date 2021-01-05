@@ -86,7 +86,6 @@
           </td>
       </t>
     </xpath>
-    <xpath expr="//div[@class='footer']" position="replace">
 	    <div class="footer" style="border: 1px solid black;">
         <div class="row" style="margin-bottom: 0px !important; padding-top: 3px; padding-bottom: 3px;">
             <div name="footer_left_column" class="col-8 text-center">
@@ -105,6 +104,5 @@
             </div>
         </div>
     </div>
-    </xpath>
   </template>
 </odoo>
