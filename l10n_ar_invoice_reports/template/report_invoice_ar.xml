@@ -86,9 +86,9 @@
           </td>
       </t>
     </xpath>
-    <xpath expr="//t[@set='custom_footer']/div[hasclass('row')]" position="replace">
+    <xpath expr="//div[@class='footer']" position="replace">
       <t t-if="o.company_id.country_id.name == 'Argentina' and o.afip_auth_code">
-        <div class="row">
+        <div class="row" style="margin-bottom: 0px !important; padding-top: 3px; padding-bottom: 3px;">
             <div name="footer_left_column" class="col-8 text-center">
               <img t-if="o.afip_qr_url" t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;humanreadable=1' % ('I2of5', o.afip_url_qr)" alt="QR"  style="width:80px;height:80px"/>
             </div>
