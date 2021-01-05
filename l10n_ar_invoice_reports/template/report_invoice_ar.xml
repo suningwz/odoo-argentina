@@ -88,11 +88,14 @@
     </xpath>
     <xpath expr="//t[@name='account_invoice_line_accountable']" position="after">
       <t t-set="custom_footer">
-        <div class="row" style="margin-bottom: 0px !important; padding-top: 3px; padding-bottom: 3px;">
-            <div name="footer_left_column" class="col-4 text-left">
+        <div class="row" style="margin-bottom: 3px !important; padding-top: 3px; padding-bottom: 3px;">
+            <div name="footer_left_column" class="col-2 text-left">
               <img t-if="o.afip_qr_url" t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;' % ('QR', o.afip_qr_url)" alt="QR"  style="width:120px;height:120px"/>
             </div>
-            <div name="footer_left_column" class="col-4 text-left">
+            <div name="footer_left_column" class="col-6 text-left">
+               <div name="pager" t-if="report_type == 'pdf'">
+                  <strong>Pág. <span class="page"/> / <span class="topage"/></strong>
+              </div>
               <img src="l10n_ar_invoice_reports/static/img/afip.jpg" alt="AFIP"  style="width:80px;height:50px"/>
               <strong><i>Comprobante Autorizado</i></strong>
               <strong><i>Esta Administración Federal no se responsabiliza por los datos ingresados en el detalle de la operación</i></strong>
@@ -103,9 +106,6 @@
               </div>
               <div t-if="o.afip_auth_code_due">
                   <strong>Fecha Vto. de CAE: </strong><span t-field="o.afip_auth_code_due"/>
-              </div>
-              <div name="pager" t-if="report_type == 'pdf'">
-                  <strong>Pág. <span class="page"/> / <span class="topage"/></strong>
               </div>
             </div>
         </div>
