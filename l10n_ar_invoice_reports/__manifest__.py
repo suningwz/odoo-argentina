@@ -23,6 +23,7 @@
     'depends': [
         'base',
         'account',
+        'l10n_ar',
         'l10n_ar_afipws_fe',
     ],
     'data': [
