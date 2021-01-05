@@ -86,26 +86,25 @@
           </td>
       </t>
     </xpath>
-  </template>
-
-  <template id="report_invoice_document_qr" inherit_id="l10n_ar.report_invoice_document" primary="True">
-    <t t-set="custom_footer" position="inside">
-          <div class="row" style="border: 1px solid black; margin-bottom: 0px !important; padding-top: 3px; padding-bottom: 3px;">
-              <div name="footer_left_column" class="col-8 text-center">
-                <img t-if="o.afip_qr_url" t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;' % ('QR', o.afip_qr_url)" alt="QR"  style="width:80px;height:80px"/>
+    <xpath expr="//t[@name='account_invoice_line_accountable']" position="after">
+      <t t-set="custom_footer">
+        <div class="row" style="border: 1px solid black; margin-bottom: 0px !important; padding-top: 3px; padding-bottom: 3px;">
+            <div name="footer_left_column" class="col-8 text-center">
+              <img t-if="o.afip_qr_url" t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;' % ('QR', o.afip_qr_url)" alt="QR"  style="width:80px;height:80px"/>
+            </div>
+            <div name="footer_right_column" class="col-4 text-right">
+              <div t-if="afip_auth_code">
+                  CAE N°: <span t-field="o.afip_auth_code"/>
               </div>
-              <div name="footer_right_column" class="col-4 text-right">
-                <div t-if="afip_auth_code">
-                    CAE N°: <span t-field="o.afip_auth_code"/>
-                </div>
-                <div t-if="afip_auth_code_due">
-                    Fecha Vto CAE: <span t-field="o.afip_auth_code_due"/>
-                </div>
-                <div name="pager" t-if="report_type == 'pdf'">
-                    Pagina: <span class="page"/> / <span class="topage"/>
-                </div>
+              <div t-if="afip_auth_code_due">
+                  Fecha Vto CAE: <span t-field="o.afip_auth_code_due"/>
               </div>
-          </div>
-    </t>
+              <div name="pager" t-if="report_type == 'pdf'">
+                  Pagina: <span class="page"/> / <span class="topage"/>
+              </div>
+            </div>
+        </div>
+      </t>
+    </xpath>
   </template>
 </odoo>
