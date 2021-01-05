@@ -88,8 +88,9 @@
     </xpath>
   </template>
 
-  <template id="report_invoice_document_with_payments_ar" inherit_id="l10n_ar.report_invoice_document_with_payments">
+  <template id="report_invoice_document_qr" inherit_id="l10n_ar.report_invoice_document">
     <t t-set="custom_footer" position="replace">
+    <t t-set="custom_footer" >
       <t t-if="o.company_id.country_id.name == 'Argentina' and o.afip_auth_code">
         <div class="row" style="margin-bottom: 0px !important; padding-top: 3px; padding-bottom: 3px;">
             <div name="footer_left_column" class="col-8 text-center">
@@ -103,7 +104,7 @@
                   Fecha Vto CAE: <span t-field="o.afip_auth_code_due"/>
               </div>
               <div name="pager" t-if="report_type == 'pdf'">
-                  Page: <span class="page"/> / <span class="topage"/>
+                  Pagina: <span class="page"/> / <span class="topage"/>
               </div>
             </div>
         </div>
@@ -114,11 +115,12 @@
             </div>
             <div name="footer_right_column" class="col-4 text-right">
                 <div name="pager" t-if="report_type == 'pdf'">
-                    Page: <span class="page"/> / <span class="topage"/>
+                    Pagina: <span class="page"/> / <span class="topage"/>
                 </div>
             </div>
         </div>
       </t>
+    </t>
     </t>
   </template>
 </odoo>
