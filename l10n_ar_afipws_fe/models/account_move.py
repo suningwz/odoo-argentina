@@ -136,7 +136,7 @@ class AccountMove(models.Model):
                     'codAut': int(rec.afip_auth_code),
                 }
                 rec.afip_qr_url = 'https://www.afip.gob.ar/fe/qr/?p=' + str(
-                    base64.b64decode(str(invoice).encode('ascii')).\
+                    base64.b64encode(str(invoice).encode('ascii')).\
                         decode('ascii'))
 
             else:
