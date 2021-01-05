@@ -54,7 +54,7 @@ class ContractContract(models.Model):
         invoice_vals = move_form._values_to_save(all_fields=True)
         if self.recurring_rule_type == 'monthly' and self.\
             recurring_interval == 1 and not self.line_recurrence and \
-            recurring_invoicing_type == 'post-paid':
+            self.recurring_invoicing_type == 'post-paid':
             l10n_ar_afip_service_start = date_invoice + \
                 relativedelta(day=1, months=-1)
             l10n_ar_afip_service_end = date_invoice + \
