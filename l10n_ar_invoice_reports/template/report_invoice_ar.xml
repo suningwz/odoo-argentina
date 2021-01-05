@@ -88,7 +88,7 @@
     </xpath>
   </template>
 
-  <template id="report_invoice_document_qr" inherit_id="l10n_ar.report_invoice_document">
+  <template id="report_invoice_document_qr" inherit_id="l10n_ar.report_invoice_document" primary="True">
     <t t-set="custom_footer" position="replace">
     <t t-set="custom_footer" >
       <t t-if="o.company_id.country_id.name == 'Argentina' and o.afip_auth_code">
