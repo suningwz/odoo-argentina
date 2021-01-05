@@ -86,9 +86,6 @@
           </td>
       </t>
     </xpath>
-  </template>
-
-  <template id="report_invoice_document_qr" inherit_id="l10n_ar.report_invoice_document" primary="True">
     <t t-set="custom_footer" position="replace">
     <t t-set="custom_footer" >
         <div class="row" style="margin-bottom: 0px !important; padding-top: 3px; padding-bottom: 3px;">
