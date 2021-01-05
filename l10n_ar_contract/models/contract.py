@@ -56,7 +56,7 @@ class ContractContract(models.Model):
             recurring_interval == 1 and not self.line_recurrence:
             l10n_ar_afip_service_start = date_invoice + \
                 relativedelta(day=1, months=-1)
-             l10n_ar_afip_service_end = date_invoice + \
+            l10n_ar_afip_service_end = date_invoice + \
                 relativedelta(day=1, days=-1)
             invoice_vals.update(
                 {
