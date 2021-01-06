@@ -30,6 +30,7 @@
         'template/report_invoice_ar.xml',
         'template/report_invoice.xml',
         'data/external_layout_report.xml',
+        'data/paperformat.xml',
         'views/account_move.xml',
     ],
     'auto_install': False,
