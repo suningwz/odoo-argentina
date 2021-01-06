@@ -3,6 +3,6 @@
     <data>
     <record id="paperformat_euro" model="report.paperformat"> 
         <field name="margin_botton">38</field>
-    </record
+    </record>
     </data>
 </odoo>
