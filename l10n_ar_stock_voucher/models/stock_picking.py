@@ -33,7 +33,7 @@ class StockPicking(models.Model):
         '''This function get data to prints the voucher'''
         for rec in self:
             data_report = []
-            lines = rec.book_id.lines_per_voucher
+            limit = rec.book_id.lines_per_voucher
             i = 1
 
             if rec.state == 'done':
@@ -45,7 +45,7 @@ class StockPicking(models.Model):
                 list_line = []
                 number_of_packages = declared_value = 0
                 for line in move_lines:
-                    if i < int(lines * (p+1)) and i > int(lines * p):
+                    if i < int(limit * (p+1)) and i > int(limit * p):
                         number_of_packages += line.qty_done
                         declared_value += rec.sale_id.order_line.filtered(
                             lambda x: x.product_id == line.product_id).\
