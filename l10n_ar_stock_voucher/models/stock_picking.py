@@ -11,6 +11,9 @@ from odoo.tests import Form
 from dateutil.relativedelta import relativedelta
 from odoo.tools.translate import _
 from datetime import datetime
+import logging
+
+_logger = logging.getLogger(__name__)
 
 
 class StockPicking(models.Model):
@@ -34,7 +37,6 @@ class StockPicking(models.Model):
         for rec in self:
             data_report = []
             limit = rec.book_id.lines_per_voucher
-            i = 1
 
             if rec.state == 'done':
                 move_lines = rec.move_line_ids_without_package
@@ -42,10 +44,13 @@ class StockPicking(models.Model):
                 move_lines = rec.move_ids_without_package
 
             for p in range(rec.get_estimated_number_of_pages()):
+                i = 1
                 list_line = []
                 number_of_packages = declared_value = 0
                 for line in move_lines:
-                    if i < int(limit * (p+1)) and i > int(limit * p):
+                    _logger.warning('HELLO I AM I:')
+                    _logger.warning(i)
+                    if i < int(limit * (p+1)) and i >= int(limit * p):
                         number_of_packages += line.qty_done
                         declared_value += rec.sale_id.order_line.filtered(
                             lambda x: x.product_id == line.product_id).\
