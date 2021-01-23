@@ -48,7 +48,7 @@ class StockPicking(models.Model):
                     if i < int(lines * cp):
                         number_of_packages += line.qty_done
                         declared_value += rec.sale_id.order_line.filtered(
-                            lambda x: x.product_id = line.product_id).price_total
+                            lambda x: x.product_id == line.product_id).price_total
                         if rec.state == 'done':
                             product_lot = line.lot_id.name or '',
                         else:
