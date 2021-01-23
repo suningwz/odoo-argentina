@@ -47,6 +47,8 @@ class StockPicking(models.Model):
                 for line in move_lines:
                     if i < int(lines * cp):
                         number_of_packages += line.qty_done
+                        declared_value += rec.sale_id.order_line.filtered(
+                            lambda x: x.product_id = line.product_id).price_total
                         if rec.state == 'done':
                             product_lot = line.lot_id.name or '',
                         else:
@@ -74,7 +76,7 @@ class StockPicking(models.Model):
                         partner.l10n_ar_afip_responsibility_type_id.name,
                     'lines': list_line,
                     'number_of_packages': number_of_packages,
-                    'declared_value': rec.declared_value,
+                    'declared_value': declared_value,
                     'client_order_ref': rec.sale_id.client_order_ref,
                 }
                 data_report.append(page_vals)
