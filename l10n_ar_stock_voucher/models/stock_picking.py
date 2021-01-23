@@ -67,7 +67,7 @@ class StockPicking(models.Model):
                             'product_lot':  product_lot
                         }
                         list_line.append(vals)
-                        i+1
+                    i+1
                 partner = rec.partner_id
                 page_vals = {
                     'partner_name': partner.display_name,
