@@ -48,9 +48,7 @@ class StockPicking(models.Model):
                 list_line = []
                 number_of_packages = declared_value = 0
                 for line in move_lines:
-                    _logger.warning('HELLO I AM I:')
-                    _logger.warning(i)
-                    if i =< int(limit * (p+1)) and i > int(limit * p):
+                    if i <= int(limit * (p+1)) and i > int(limit * p):
                         number_of_packages += line.qty_done
                         declared_value += rec.sale_id.order_line.filtered(
                             lambda x: x.product_id == line.product_id).\
